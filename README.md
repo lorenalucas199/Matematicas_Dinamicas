@@ -1,1 +1,0 @@
-# Matematicas_Dinamicas
