@@ -43,5 +43,6 @@ function Biseccion(f, a, b, n) {
 
 // Ejemplo de uso (se puede escribir también desde la propia consola)
 const fun = x => x**3 - 4 * x - 9; // Las funciones con la variable simbolica x se definen así con la flecha
-console.log("Aproximación de la raíz:", Biseccion(fun, 2, 3, 20));
+console.log("La raíz aproximada de la función ", fun, " es ", Biseccion(fun, 2, 3, 20));
+
 
