@@ -41,8 +41,7 @@ function Biseccion(f, a, b, n) {
     return medio; // Devolver la mejor aproximación de la raíz
 }
 
-// Ejemplo de uso
+// Ejemplo de uso (se puede escribir también desde la propia consola)
 const fun = x => x**3 - 4 * x - 9; // Las funciones con la variable simbolica x se definen así con la flecha
-let raiz = Biseccion(fun, 2, 3, 20);
-console.log("Aproximación de la raíz:", raiz);
-console.log(Biseccion(fun, 2, 3, 20));
+console.log("Aproximación de la raíz:", Biseccion(fun, 2, 3, 20));
+
