@@ -15,7 +15,7 @@ function abs(x) {
 // Función principal que implementa el método de la bisección
 function Biseccion(f, a, b, n) {
     // Comprobar que hay un cambio de signo en el intervalo
-    if (CambioSigno(f, a, b)==False) {
+    if (CambioSigno(f, a, b)==false) {
         console.log("El método de bisección no es aplicable en este intervalo.");
         return null;
     }
@@ -32,7 +32,7 @@ function Biseccion(f, a, b, n) {
         }
 
         // Decidir en qué subintervalo continuar
-        if (CambioSigno(f, a, medio)==True) {
+        if (CambioSigno(f, a, medio)==true) {
             b = medio;
         } else {
             a = medio;
