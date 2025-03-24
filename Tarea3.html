@@ -35,79 +35,79 @@ TeX: {
 <h1>¡Derivadas!</h1>
 <h3>de Lorena Lucas Baños</h3>
 
-<u><h2> Definición:</h2></u>
+<u><h2>Definición:</h2></u>
 Se llama <strong> función derivada </strong> y se denota $f'(x)$, a la función que asocia a cada abcisa $x$, la derivada en ese valor.
-<p style="text-align: center;">\[f'(x)=\lim_{h\rightarrow 0}\frac{f(x+h)-f(x)}{h} . \]</p>
+<p style="text-align: center;">\[f'(x)=\lim_{h\rightarrow 0}\frac{f(x+h)-f(x)}{h} .\]</p>
 <br>
  
-<u><h2> Derivadas de funciones conocidas:</h2></u>
+<u><h2>Derivadas de funciones conocidas:</h2></u>
 
- <table style="margin-left: auto; margin-right: auto;">  
+ <table style="margin-left:auto; margin-right:auto;">  
         <tr>
             <th colspan="2">Funciones elementales</th>
         </tr>
         <tr>
-            <th>Función $ f(x)$</th>
+            <th>Función $f(x)$</th>
             <th>Derivada $f'(x)$</th>
         </tr>
+        <tr style="background-color:#FFDAB9;">
+            <td>$f(x)=k$</td>
+            <td>$f'(x)=0$</td>
+        </tr>
+        <tr style="background-color:#FF7F50;">
+            <td>$f(x)=x$</td>
+            <td>$f'(x)=1$</td>
+        </tr>
+        <tr style="background-color:#FFDAB9;">
+            <td>$f(x)=x^p, \quad p \in \mathbb{R}$</td>
+            <td>$f'(x)=p x^{p-1}$</td>
+        </tr>
+        <tr style="background-color:#FF7F50;">
+            <td>$f(x)=\ln x$</td>
+            <td>$f'(x)=\frac{1}{x}$</td>
+        </tr>
+        <tr style="background-color:#FFDAB9;">
+            <td>$f(x)=\log_a x$</td>
+            <td>$f'(x)=\frac{1}{x \ln a}$</td>
+        </tr>
+        <tr style="background-color:#FF7F50;">
+            <td>$f(x)=e^x$</td>
+            <td>$f'(x)=e^x $</td>
+        </tr>
+        <tr style="background-color:#FFDAB9;">
+            <td>$f(x)=a^x$</td>
+            <td>$f'(x)=a^x \ln a$</td>
+        </tr>
+        <tr style="background-color:#FF7F50;">
+            <td>$f(x)=\sin x$</td>
+            <td>$f'(x)=\cos x$</td>
+        </tr>
+        <tr style="background-color:#FFDAB9;">
+            <td>$f(x)=\cos x$</td>
+            <td>$f'(x)=-\sin x$</td>
+        </tr>
+        <tr style="background-color:#FF7F50;">
+            <td>$f(x)=\tan x$</td>
+            <td>$f'(x)=\frac{1}{\cos^2 x}=1+\tan^2 x$</td>
+        </tr>
+        <tr style="background-color:#FFDAB9;">
+            <td>$f(x)=\arcsin x$</td>
+            <td>$f'(x)=\frac{1}{\sqrt{1-x^2}}$</td>
+        </tr>
+        <tr style="background-color:#FF7F50;">
+            <td>$f(x)=\arccos x$</td>
+            <td>$f'(x)=\frac{-1}{\sqrt{1-x^2}}$</td>
+        </tr>
         <tr style="background-color: #FFDAB9;">
-            <td> $f(x) = k.$</td>
-            <td>$f'(x) = 0$</td>
-        </tr>
-        <tr style="background-color: #FF7F50;">
-            <td>$ f(x) = x$</td>
-            <td>$ f'(x) = 1 $</td>
-        </tr>
-        <tr style="background-color: #FFDAB9;">
-            <td>$ f(x) = x^p, \quad p \in \mathbb{R} $</td>
-            <td>$ f'(x) = p x^{p-1} $</td>
-        </tr>
-        <tr style="background-color: #FF7F50;">
-            <td>$f(x) = \ln x $</td>
-            <td>$f'(x) = \frac{1}{x} $</td>
-        </tr>
-        <tr style="background-color: #FFDAB9;">
-            <td>$f(x) = \log_a x$</td>
-            <td>$f'(x) = \frac{1}{x \ln a}$</td>
-        </tr>
-        <tr style="background-color: #FF7F50;">
-            <td>$f(x) = e^x$</td>
-            <td>$f'(x) = e^x $</td>
-        </tr>
-        <tr style="background-color: #FFDAB9;">
-            <td>$ f(x) = a^x $</td>
-            <td>$f'(x) = a^x \ln a$</td>
-        </tr>
-        <tr style="background-color: #FF7F50;">
-            <td>$f(x) = \sin x $</td>
-            <td>$ f'(x) = \cos x $</td>
-        </tr>
-        <tr style="background-color: #FFDAB9;">
-            <td>$ f(x) = \cos x$</td>
-            <td>$f'(x) = -\sin x $</td>
-        </tr>
-        <tr style="background-color: #FF7F50;">
-            <td>$f(x) = \tan x$</td>
-            <td>$f'(x) = \frac{1}{\cos^2 x} = 1 + \tan^2 x $</td>
-        </tr>
-        <tr style="background-color: #FFDAB9;">
-            <td>$f(x) = \arcsin x$</td>
-            <td>$f'(x) = \frac{1}{\sqrt{1 - x^2}}$</td>
-        </tr>
-        <tr style="background-color: #FF7F50;">
-            <td>$f(x) = \arccos x $</td>
-            <td>$ f'(x) = \frac{-1}{\sqrt{1 - x^2}} $</td>
-        </tr>
-        <tr style="background-color: #FFDAB9;">
-            <td>$ f(x) = \arctan x $</td>
-            <td>$f'(x) = \frac{1}{1 + x^2}$</td>
+            <td>$f(x)=\arctan x$</td>
+            <td>$f'(x)=\frac{1}{1+x^2}$</td>
         </tr>
     </table>
  
 <p style="text-align:center;">Todas estas se pueden deducir con la definición de derivada de una función, ¡pruébalo!.</p>
 <br>
 
-<u><h2> Derivadas de operaciones con funciones:</h2></u>
+<u><h2>Derivadas de operaciones con funciones:</h2></u>
 <ul>
       <li> Derivada del producto de un número por una función: $(k\cdot f)'(x)=k\cdot f'(x)$, para $k \in \R$.</li><br> 
       <li> Derivada de la suma de dos funciones: $(f+g)'(x)=f'(x)+g'(x).$ </li><br>
@@ -118,12 +118,12 @@ Se llama <strong> función derivada </strong> y se denota $f'(x)$, a la función
    
 <u><h2> Regla de la cadena:</h2></u>
 La derivada de la composición de dos funciones se obtiene aplicando la regla de la cadena: 
-<p style="text-align: center;">\[(f\circ g)'(x) = f'(g(x))\cdot g'(x).\]</p>
+<p style="text-align:center;">\[(f\circ g)'(x) = f'(g(x))\cdot g'(x).\]</p>
 <br>
 
-<u><h2> Recta tangente:</h2></u>
+<u><h2>Recta tangente:</h2></u>
 Para calcular la recta tangente de una función $f(x)$ en el punto de abcisa $x=a$, sabemos que:
-<ul style="list-style-type: '- ';">
+<ul style="list-style-type:'- ';">
     <li>Pasará por el punto $(a,f(a))$.</li>
     <li>La derivada de la función en el punto es la pendiente de la recta tangente a la función en dicho punto, es decir, $m=f'(a).$</li>
 </ul>
