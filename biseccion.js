@@ -19,8 +19,7 @@ function Biseccion(f,a,b,n){
     
     //Comprobar que hay un cambio de signo en el intervalo: si no hay cambio, no habrá ninguna raíz (o habrá más de una) y no se podrá aplicar el método.
     if(CambioSigno(f,a,b)==false){
-        console.log("El método de bisección no es aplicable en este intervalo.");
-        return null; // y salimos de la función sin devolver nada
+        return console.log("El método de bisección no es aplicable en este intervalo."); // y salimos de la función sin devolver nada
     }
 
     //Si se puede aplicar el método, se lleva a cabo el siguiente bucle de los pasos:
@@ -31,7 +30,7 @@ function Biseccion(f,a,b,n){
 
         //Si f(medio) es cero (o muy cercano), se ha encontrado la raíz:
         if(abs(fMedio)<1e-10){
-            return medio;
+            return console.log("La raíz aproximada de la función ", f, " es ", medio, " conseguida en ", i, " interacciones del método de bisección.");
             break; //en este caso, se termina aquí la función
         }
 
@@ -42,24 +41,23 @@ function Biseccion(f,a,b,n){
             a=medio; //sino, estará en [medio,b] y cambiamos a por el medio
         }
     }
-    console.log("No se ha podido encontrar ninguna buena aproximación con el método de bisección.");
-    return medio; // Devolver la mejor aproximación de la raíz
+    return console.log("No se ha podido encontrar ninguna buena aproximación con el método de bisección."); // Devolver la mejor aproximación de la raíz
 }
 
 //Ejemplos(se puede escribir también desde la propia consola):
 const fun1=x=>x**2-4*x;
-console.log("La raíz aproximada de la función ", fun1, " es ", Biseccion(fun1,-5,6,20)); //hay más de una raíz: no hay cambio de signo
+Biseccion(fun1,-5,6,20); //hay más de una raíz: no hay cambio de signo
 
-console.log("La raíz aproximada de la función ", fun1, " es ", Biseccion(fun1,1,3,100)); //no hay raíz en el intervalo: no hay cambio de signo
+Biseccion(fun1,1,3,100); //no hay raíz en el intervalo: no hay cambio de signo
 
 const fun2=x=>x**3-4*x-9; //las funciones con la variable simbolica x se definen así con la flecha
-console.log("La raíz aproximada de la función ", fun2, " es ", Biseccion(fun2,2,3,20)); //devolver la raíz
+Biseccion(fun2,2,3,20)); //devolver la raíz
 
-console.log("La raíz aproximada de la función ", fun1, " es ", Biseccion(fun1,-1,1,20)); //una raíz: x=0
+Biseccion(fun1,-1,1,20); //una raíz: x=0
 
-console.log("La raíz aproximada de la función ", fun1, " es ", Biseccion(fun1,1,5,20)); //una raíz: x=4
+Biseccion(fun1,1,5,20); //una raíz: x=4
 
-console.log("La raíz aproximada de la función ", fun1, " es ", Biseccion(fun1,-3,1,2)); //no hay suficientes pasos: devolver mensaje "no es una buena aproximación"
+Biseccion(fun1,-3,1,1); //no hay suficientes pasos: devolver mensaje "no es una buena aproximación"
 
 
 
