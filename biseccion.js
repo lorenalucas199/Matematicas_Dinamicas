@@ -42,6 +42,7 @@ function Biseccion(f,a,b,n){
             a=medio; //sino, estará en [medio,b] y cambiamos a por el medio
         }
     }
+    console.log("No se ha podido encontrar ninguna buena aproximación con el método de bisección.");
     return medio; // Devolver la mejor aproximación de la raíz
 }
 
