@@ -42,7 +42,7 @@ function Biseccion(f,a,b,n){
         }
     }
     //Si no se ha conseguido la raíz en ese intervalo, devolver el mensaje:
-    return console.log("No se ha podido encontrar ninguna buena aproximación en ", i," iteraciones de la raíz de la función ", f, "en el con el intervalo [", a, ", ", b, "] con el método de bisección."); 
+    return console.log("No se ha podido encontrar ninguna buena aproximación en ", n," iteraciones de la raíz de la función ", f, "en el con el intervalo [", a, ", ", b, "] con el método de bisección."); 
 }
 
 //Ejemplos(se puede escribir también desde la propia consola):
