@@ -19,18 +19,18 @@ function Biseccion(f,a,b,n){
     
     //Comprobar que hay un cambio de signo en el intervalo: si no hay cambio, no habrá ninguna raíz (o habrá más de una) y no se podrá aplicar el método.
     if(CambioSigno(f,a,b)==false){
-        return console.log("El método de bisección no es aplicable en este intervalo."); // y salimos de la función sin devolver nada
+        return console.log("Para la función ", f, " el método de bisección no es aplicable en el intervalo [", a, ", ", b, "]."); // y salimos de la función sin devolver nada
     }
 
     //Si se puede aplicar el método, se lleva a cabo el siguiente bucle de los pasos:
     let medio; //definir el punto medio
-    for(let i=0; i<n; i++){ //se repite como mucho n veces (indicadas por el  usuario) 
+    for(let i=1; i<n+1; i++){ //se repite como mucho n veces (indicadas por el  usuario) 
         medio=(a+b)/2; //calcular el punto medio
         let fMedio=f(medio); //calcular la imagen del punto medio
 
         //Si f(medio) es cero (o muy cercano), se ha encontrado la raíz:
         if(abs(fMedio)<1e-10){
-            return console.log("La raíz aproximada de la función ", f, " es ", medio, " conseguida en ", i, " interacciones del método de bisección.");
+            return console.log("La raíz aproximada de la función ", f, " en el intervalo [", a, ", ", b, "]  es ", medio, " conseguida en ", i, " iteracciones del método de bisección."); //Devolver la raíz
             break; //en este caso, se termina aquí la función
         }
 
@@ -41,7 +41,8 @@ function Biseccion(f,a,b,n){
             a=medio; //sino, estará en [medio,b] y cambiamos a por el medio
         }
     }
-    return console.log("No se ha podido encontrar ninguna buena aproximación con el método de bisección."); // Devolver la mejor aproximación de la raíz
+    //Si no se ha conseguido la raíz en ese intervalo, devolver el mensaje:
+    return console.log("No se ha podido encontrar ninguna buena aproximación en ", i," iteraciones de la raíz de la función ", f, "en el con el intervalo [", a, ", ", b, "] con el método de bisección."); 
 }
 
 //Ejemplos(se puede escribir también desde la propia consola):
