@@ -51,7 +51,7 @@ Biseccion(fun1,-5,6,20); //hay más de una raíz: no hay cambio de signo
 Biseccion(fun1,1,3,100); //no hay raíz en el intervalo: no hay cambio de signo
 
 const fun2=x=>x**3-4*x-9; //las funciones con la variable simbolica x se definen así con la flecha
-Biseccion(fun2,2,3,20)); //devolver la raíz
+Biseccion(fun2,2,3,20); //devolver la raíz
 
 Biseccion(fun1,-1,1,20); //una raíz: x=0
 
