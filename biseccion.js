@@ -20,7 +20,7 @@ function Biseccion(f,a,b,n){
     //Comprobar que hay un cambio de signo en el intervalo: si no hay cambio, no habrá ninguna raíz (o habrá más de una) y no se podrá aplicar el método.
     if(CambioSigno(f,a,b)==false){
         console.log("El método de bisección no es aplicable en este intervalo.");
-        break;
+        return null; // y salimos de la función sin devolver nada
     }
 
     //Si se puede aplicar el método, se lleva a cabo el siguiente bucle de los pasos:
