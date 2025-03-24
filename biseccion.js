@@ -1,48 +1,52 @@
-// Función auxiliar para comprobar si hay cambio de signo en el intervalo
-function CambioSigno(f, a, b) {
-    return f(a) * f(b) < 0;
+//Función para comprobar si hay cambio de signo en el intervalo:
+function CambioSigno(f,a,b){
+    return f(a)*f(b)<0;
 }
 
-//Función valor absoluto
-function abs(x) {
-    if (x < 0) {
+
+//Función valor absoluto:
+function abs(x){
+    if (x<0){
         return -x;
-    } else {
+    }else{
         return x;
     }
 }
 
-// Función principal que implementa el método de la bisección
-function Biseccion(f, a, b, n) {
-    // Comprobar que hay un cambio de signo en el intervalo
-    if (CambioSigno(f, a, b)==false) {
+
+//Función del método de la bisección:
+function Biseccion(f,a,b,n){
+    
+    //Comprobar que hay un cambio de signo en el intervalo: si no hay cambio, no habrá ninguna raíz (o habrá más de una) y no se podrá aplicar el método.
+    if(CambioSigno(f,a,b)==false){
         console.log("El método de bisección no es aplicable en este intervalo.");
-        return null;
+        break;
     }
 
-    let medio;
-    for (let i = 0; i < n; i++) {
-        medio = (a + b) / 2; // Calcular el punto medio
-        let fMedio = f(medio);
+    //Si se puede aplicar el método, se lleva a cabo el siguiente bucle de los pasos:
+    let medio; //definir el punto medio
+    for(let i=0; i<n; i++){ //se repite como mucho n veces (indicadas por el  usuario) 
+        medio=(a+b)/2; //calcular el punto medio
+        let fMedio=f(medio); //calcular la imagen del punto medio
 
-        // Si f(medio) es cero (o muy cercano), se ha encontrado la raíz
-        if (abs(fMedio) < 1e-10) {
+        //Si f(medio) es cero (o muy cercano), se ha encontrado la raíz:
+        if(abs(fMedio)<1e-10){
             return medio;
-            break;
+            break; //en este caso, se termina aquí la función
         }
 
-        // Decidir en qué subintervalo continuar
-        if (CambioSigno(f, a, medio)==true) {
-            b = medio;
-        } else {
-            a = medio;
+        //Si no se ha encontrado la raíz, decidir en qué subintervalo continuar:
+        if(CambioSigno(f,a,medio)==true){
+            b=medio; //si el cambio está en el intervalo [a,medio], cambiamos b por el medio
+        }else{
+            a=medio; //sino, estará en [medio,b] y cambiamos a por el medio
         }
     }
     return medio; // Devolver la mejor aproximación de la raíz
 }
 
-// Ejemplo de uso (se puede escribir también desde la propia consola)
-const fun = x => x**3 - 4 * x - 9; // Las funciones con la variable simbolica x se definen así con la flecha
-console.log("La raíz aproximada de la función ", fun, " es ", Biseccion(fun, 2, 3, 20));
+//Ejemplo(se puede escribir también desde la propia consola):
+const fun=x=>x**3-4*x-9; //las funciones con la variable simbolica x se definen así con la flecha
+console.log("La raíz aproximada de la función ", fun, " es ", Biseccion(fun,2,3,20));
 
 
