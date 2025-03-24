@@ -16,6 +16,9 @@ function abs(x){
 
 //Función del método de la bisección:
 function Biseccion(f,a,b,n){
+    //Guardamos los extremos del intervalos para tener los originales porque se modificaran
+    let a1=a;
+    let b1=b;
     
     //Comprobar que hay un cambio de signo en el intervalo: si no hay cambio, no habrá ninguna raíz (o habrá más de una) y no se podrá aplicar el método.
     if(CambioSigno(f,a,b)==false){
@@ -30,7 +33,7 @@ function Biseccion(f,a,b,n){
 
         //Si f(medio) es cero (o muy cercano), se ha encontrado la raíz:
         if(abs(fMedio)<1e-10){
-            return console.log("La raíz aproximada de la función ", f, " en el intervalo [", a, ", ", b, "]  es ", medio, " conseguida en ", i, " iteracciones del método de bisección."); //Devolver la raíz
+            return console.log("La raíz aproximada de la función ", f, " en el intervalo [", a1, ", ", b1, "]  es ", medio, " conseguida en ", i, " iteracciones del método de bisección."); //Devolver la raíz
             break; //en este caso, se termina aquí la función
         }
 
@@ -42,7 +45,7 @@ function Biseccion(f,a,b,n){
         }
     }
     //Si no se ha conseguido la raíz en ese intervalo, devolver el mensaje:
-    return console.log("No se ha podido encontrar ninguna buena aproximación en ", n," iteraciones de la raíz de la función ", f, "en el con el intervalo [", a, ", ", b, "] con el método de bisección."); 
+    return console.log("No se ha podido encontrar ninguna buena aproximación en ", n," iteraciones de la raíz de la función ", f, "en el con el intervalo [", a1, ", ", b1, "] con el método de bisección. Prueba con más iteracciones."); 
 } 
 
 //Ejemplos(se puede escribir también desde la propia consola):
@@ -52,7 +55,7 @@ Biseccion(fun1,-5,6,20); //hay más de una raíz: no hay cambio de signo
 Biseccion(fun1,1,3,100); //no hay raíz en el intervalo: no hay cambio de signo
 
 const fun2=x=>x**3-4*x-9; //las funciones con la variable simbolica x se definen así con la flecha
-Biseccion(fun2,2,3,20); //devolver la raíz 
+Biseccion(fun2,2,3,1000); //devolver la raíz 
 
 Biseccion(fun1,-1,1,20); //una raíz: x=0
 
