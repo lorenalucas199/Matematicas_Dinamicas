@@ -47,22 +47,22 @@ function Biseccion(f,a,b,n){
 }
 
 //Ejemplos(se puede escribir también desde la propia consola):
-const fun=x=>x**2-4x;
+const fun=x=>x**2-4*x;
 console.log("La raíz aproximada de la función ", fun, " es ", Biseccion(fun,-5,6,20)); //hay más de una raíz: no hay cambio de signo
 
-const fun=x=>x**2-4x;
+const fun=x=>x**2-4*x;
 console.log("La raíz aproximada de la función ", fun, " es ", Biseccion(fun,1,3,100)); //no hay raíz en el intervalo: no hay cambio de signo
 
 const fun=x=>x**3-4*x-9; //las funciones con la variable simbolica x se definen así con la flecha
 console.log("La raíz aproximada de la función ", fun, " es ", Biseccion(fun,2,3,20)); //devolver la raíz
 
-const fun=x=>x**2-4x;
+const fun=x=>x**2-4*x;
 console.log("La raíz aproximada de la función ", fun, " es ", Biseccion(fun,-1,1,20)); //una raíz: x=0
 
-const fun=x=>x**2-4x;
+const fun=x=>x**2-4*x;
 console.log("La raíz aproximada de la función ", fun, " es ", Biseccion(fun,1,5,20)); //una raíz: x=4
 
-const fun=x=>x**2-4x;
+const fun=x=>x**2-4*x;
 console.log("La raíz aproximada de la función ", fun, " es ", Biseccion(fun,-3,1,2)); //no hay suficientes pasos: devolver mensaje "no es una buena aproximación"
 
 
