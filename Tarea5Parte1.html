@@ -15,21 +15,21 @@
     
     <!Definir el interior lo que haremos en el interior del canvas:>
     <script>
-    var c = document.getElementById("myCanvas1");
-    var ctx = c.getContext("2d");
+    var c=document.getElementById("myCanvas1");
+    var ctx=c.getContext("2d");
 
     //Definir la función para obtener las coordenadas de cada click dentro del canvas:
-    var puntos = []; //definir la variable puntos para almacenarlos
+    var puntos=[]; //definir la variable puntos para almacenarlos
     function obtenerCoordenadas(event) {
-        var coordCanvas = c.getBoundingClientRect(); //posición del canvas en la pantalla          
+        var coordCanvas=c.getBoundingClientRect(); //posición del canvas en la pantalla          
         var x=event.clientX-coordCanvas.x; //coordenada X en el canvas
         var y=event.clientY-coordCanvas.y; //coordenada Y en el canvas
         return {x, y};
     }
 
     //Definir la función para dibujar las líneas entre los dos últimos puntos seleccionados:
-    function dibujarLinPol() {
-        if (puntos.length < 2){
+    function dibujarLinPol(){
+        if(puntos.length<2){
         return null; //si no hay al menos dos puntos, no se dibuja nada
         }
             
@@ -37,37 +37,37 @@
         ctx.beginPath(); //indica que se va a dibujar un camino
         ctx.moveTo(puntos[puntos.length-2].x, puntos[puntos.length-2].y); //se crea el punto de inicio de una línea (¡¡-2 porque la lista empieza en 0!!)
         ctx.lineTo(puntos[puntos.length-1].x, puntos[puntos.length-1].y); //crea el punto final de la línea
-        ctx.strokeStyle = "black"; //color de la línea
-        ctx.lineWidth = 3; //grosor de la línea
+        ctx.strokeStyle="black"; //color de la línea
+        ctx.lineWidth=3; //grosor de la línea
         ctx.stroke(); //dibujar la línea
     }
 
     //Evento que detecta los clicks en el canvas y almacenas las coordenadas en puntos:
-    c.addEventListener('click', (event) => {
+    c.addEventListener('click', (event)=>{
         var punto = obtenerCoordenadas(event); //con la función definida anteriormente, guardamos en punto las coordenadas del click
         puntos.push(punto); //lo añade a puntos
         dibujarLinPol(); //dibuja la línea de este punto y el anterior
     });
 
     //Función para deshacer el último punto agregado: borrará todo y volverá a repetir lo que hemos hecho en la función dibujarLinPol() con los puntos restantes
-    function deshacerPunto() {
+    function deshacerPunto(){
         ctx.clearRect(0, 0, c.width, c.height); //borrar todo el dibujo
         puntos.pop(); //eliminar el último punto de la lista
         
         //redibujar todas las líneas:
-        for (let i = 1; i < puntos.length; i++) {
+        for (let i=1; i<puntos.length; i++){
             ctx.beginPath();
-            ctx.moveTo(puntos[i - 1].x, puntos[i - 1].y); //para i=1, queremos que coja el primer punto, la posición 0 de la lista: habrá que tomar la posición i-1
+            ctx.moveTo(puntos[i-1].x, puntos[i-1].y); //para i=1, queremos que coja el primer punto, la posición 0 de la lista: habrá que tomar la posición i-1
             ctx.lineTo(puntos[i].x, puntos[i].y); //y el punto final será el mismo que el valor el de la posición i
-            ctx.strokeStyle = "black";
-            ctx.lineWidth = 3;
+            ctx.strokeStyle="black";
+            ctx.lineWidth=3;
             ctx.stroke();
         }
     }
 
     //Limpiar completamente el dibujo:
     function reiniciarDibujo() {
-        puntos.length = 0; //reiniciar la lista de puntos
+        puntos.length=0; //reiniciar la lista de puntos
         ctx.clearRect(0, 0, c.width, c.height); //borrar todo el canvas
     }
     </script>
