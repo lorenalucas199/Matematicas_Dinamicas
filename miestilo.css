@@ -8,7 +8,12 @@ table{width:50%; border:5px solid black; text-align:center;}
 
 th,td{border:1px solid black;}
 
+.fondoClaro {background-color:#FF7F50;}
+
+.fondoOscuro{background-color:#FFDAB9}
+
 .centro{text-align:center;}
 
 .borde{border:5px solid black;}
 
+.recuadro{border:1px solid black; color:#ccc; text-align:center}
