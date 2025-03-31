@@ -1,91 +1,80 @@
 <!DOCTYPE html>
-<html lang="es-ES">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dibuja tu línea poligonal</title>
-<link rel="stylesheet" href="miestilo.css">
-<body  style="font-family:'Rubik', sans-serif; font-size:18px; background:linear-gradient(to bottom, #FF7F50, #FFDAB9); height:100vh; text-align:center;">
-    <h1>Matemáticas Dinámicas</h1>
-    <h3>de Lorena Lucas Baños</h3>
-    En el siguiente espacio podrás dibujar una línea poligonal: una línea formada por los segmentos que unen cada punto donde hagas click con el anterior.<br><br>
-    <!Crear el elemento canvas, indicando el recuadro con la clase de miestilo.css "recuadro" y que será un dibujo 2D:>
-    <canvas id="myCanvas1" width="600" height="400" class="recuadro"></canvas>
-
-
-    
-    <!Definir el interior lo que haremos en el interior del canvas:>
-    <script>
-    var c=document.getElementById("myCanvas1");
-    var ctx=c.getContext("2d");
-
-    //Definir la función para obtener las coordenadas de cada click dentro del canvas:
-    var puntos=[]; //definir la variable puntos para almacenarlos
-    function obtenerCoordenadas(event) {
-        var coordCanvas=c.getBoundingClientRect(); //posición del canvas en la pantalla          
-        var x=event.clientX-coordCanvas.x; //coordenada X en el canvas
-        var y=event.clientY-coordCanvas.y; //coordenada Y en el canvas
-        return {x, y};
-    }
-
-    //Definir la función para dibujar las líneas entre los dos últimos puntos seleccionados:
-    function dibujarLinPol(){
-        if(puntos.length<2){
-        return null; //si no hay al menos dos puntos, no se dibuja nada
-        }
-            
-        //realizar el dibujo:
-        ctx.beginPath(); //indica que se va a dibujar un camino
-        ctx.moveTo(puntos[puntos.length-2].x, puntos[puntos.length-2].y); //se crea el punto de inicio de una línea (¡¡-2 porque la lista empieza en 0!!)
-        ctx.lineTo(puntos[puntos.length-1].x, puntos[puntos.length-1].y); //crea el punto final de la línea
-        ctx.strokeStyle="black"; //color de la línea
-        ctx.lineWidth=3; //grosor de la línea
-        ctx.stroke(); //dibujar la línea
-    }
-
-    //Evento que detecta los clicks en el canvas y almacenas las coordenadas en puntos:
-    function guardarPunto(event) {
-    var cc = document.getElementById('myCanvas3'); // Referencia al canvas
-    var coordCanvas = cc.getBoundingClientRect(); // Posición del canvas en la pantalla
-
-    // Calcula las coordenadas del clic dentro del canvas
-    var x = event.clientX - coordCanvas.left;
-    var y = event.clientY - coordCanvas.top;
-
-    var punto = { x: x, y: y }; // Crea un objeto con las coordenadas
-    puntos.push(punto); // Agrega el punto a la lista de puntos
-
-    dibujarLinPol(); // Dibuja la línea poligonal conectando los puntos
-}
-
-    //Función para deshacer el último punto agregado: borrará todo y volverá a repetir lo que hemos hecho en la función dibujarLinPol() con los puntos restantes
-    function deshacerPunto(){
-        ctx.clearRect(0, 0, c.width, c.height); //borrar todo el dibujo
-        puntos.pop(); //eliminar el último punto de la lista
-        
-        //redibujar todas las líneas:
-        for (let i=1; i<puntos.length; i++){
-            ctx.beginPath();
-            ctx.moveTo(puntos[i-1].x, puntos[i-1].y); //para i=1, queremos que coja el primer punto, la posición 0 de la lista: habrá que tomar la posición i-1
-            ctx.lineTo(puntos[i].x, puntos[i].y); //y el punto final será el mismo que el valor el de la posición i
-            ctx.strokeStyle="black";
-            ctx.lineWidth=3;
-            ctx.stroke();
-        }
-    }
-
-    //Limpiar completamente el dibujo:
-    function reiniciarDibujo() {
-        puntos.length=0; //reiniciar la lista de puntos
-        ctx.clearRect(0, 0, c.width, c.height); //borrar todo el canvas
-    }
-    </script>
-
-
-    
-    <!Además del canvas del inicio, añadiremos dos botones con las funciones definidas:>
-    <div>
-        <button onclick="deshacerPunto()">Deshacer último punto</button>
-        <button onclick="reiniciarDibujo()">Reiniciar dibujo</button>
-    </div>
-</body>
-</html>
+ <html lang="es-ES">
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>Dibuja tu línea poligonal</title>
+ <link rel="stylesheet" href="miestilo.css">
+ <body  style="font-family:'Rubik', sans-serif; font-size:18px; background:linear-gradient(to bottom, #FF7F50, #FFDAB9); height:100vh; text-align:center;">
+     <h1>Matemáticas Dinámicas</h1>
+     <h3>de Lorena Lucas Baños</h3>
+     En el siguiente espacio podrás dibujar una línea poligonal: una línea formada por los segmentos que unen cada punto donde hagas click con el anterior.<br><br>
+     <!Crear el elemento canvas, indicando el recuadro con la clase de miestilo.css "recuadro" y que será un dibujo 2D:>
+     <canvas id="myCanvas1" width="600" height="400" class="recuadro" onclick='coordenadas(event)'></canvas>
+     <div id='clickdiv'></div> 
+ 
+ 
+     <!Definir el interior lo que haremos en el interior del canvas:>
+     <script>
+     var c=document.getElementById("myCanvas1");
+     var ctx=c.getContext("2d");
+ 
+     //Definir la función para obtener las coordenadas de cada click dentro del canvas:
+     var puntos=[]; //definir la variable puntos para almacenarlos
+     function coordenadas(event) {
+         var coordCanvas=c.getBoundingClientRect(); //posición del canvas en la pantalla          
+         var x=event.clientX-coordCanvas.x; //coordenada X en el canvas
+         var y=event.clientY-coordCanvas.y; //coordenada Y en el canvas
+         var punto={x, y};
+         puntos.push(punto); //lo añade a puntos
+         dibujarLinPol(); //dibuja la línea de este punto y el anterior
+     };
+         
+     
+ 
+     //Definir la función para dibujar las líneas entre los dos últimos puntos seleccionados:
+     function dibujarLinPol(){
+         if(puntos.length<2){
+         return null; //si no hay al menos dos puntos, no se dibuja nada
+         }
+ 
+         //realizar el dibujo:
+         ctx.beginPath(); //indica que se va a dibujar un camino
+         ctx.moveTo(puntos[puntos.length-2].x, puntos[puntos.length-2].y); //se crea el punto de inicio de una línea (¡¡-2 porque la lista empieza en 0!!)
+         ctx.lineTo(puntos[puntos.length-1].x, puntos[puntos.length-1].y); //crea el punto final de la línea
+         ctx.strokeStyle="black"; //color de la línea
+         ctx.lineWidth=3; //grosor de la línea
+         ctx.stroke(); //dibujar la línea
+     }
+ 
+     //Función para deshacer el último punto agregado: borrará todo y volverá a repetir lo que hemos hecho en la función dibujarLinPol() con los puntos restantes
+     function deshacerPunto(){
+         ctx.clearRect(0, 0, c.width, c.height); //borrar todo el dibujo
+         puntos.pop(); //eliminar el último punto de la lista
+ 
+         //redibujar todas las líneas:
+         for (let i=1; i<puntos.length; i++){
+             ctx.beginPath();
+             ctx.moveTo(puntos[i-1].x, puntos[i-1].y); //para i=1, queremos que coja el primer punto, la posición 0 de la lista: habrá que tomar la posición i-1
+             ctx.lineTo(puntos[i].x, puntos[i].y); //y el punto final será el mismo que el valor el de la posición i
+             ctx.strokeStyle="black";
+             ctx.lineWidth=3;
+             ctx.stroke();
+         }
+     }
+ 
+     //Limpiar completamente el dibujo:
+     function reiniciarDibujo() {
+         puntos.length=0; //reiniciar la lista de puntos
+         ctx.clearRect(0, 0, c.width, c.height); //borrar todo el canvas
+     }
+     </script>
+ 
+ 
+ 
+     <!Además del canvas del inicio, añadiremos dos botones con las funciones definidas:>
+     <div>
+         <button onclick="deshacerPunto()">Deshacer último punto</button>
+         <button onclick="reiniciarDibujo()">Reiniciar dibujo</button>
+     </div>
+ </body>
+ </html>
