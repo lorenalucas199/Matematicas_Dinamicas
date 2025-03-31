@@ -43,11 +43,17 @@
     }
 
     //Evento que detecta los clicks en el canvas y almacenas las coordenadas en puntos:
-    c.addEventListener('click', (event)=>{
-        var punto = obtenerCoordenadas(event); //con la función definida anteriormente, guardamos en punto las coordenadas del click
-        puntos.push(punto); //lo añade a puntos
-        dibujarLinPol(); //dibuja la línea de este punto y el anterior
-    });
+    function muestraClick(event) {
+            var dd = document.getElementById('clickdiv'); // Div donde se mostrará el resultado
+            var cc = document.getElementById('myCanvas3'); // Canvas donde se hace el clic
+            var coordCanvas = cc.getBoundingClientRect(); // Obtiene posición del canvas en la pantalla
+            
+            // Calcula coordenadas del clic dentro del canvas
+            var x = event.clientX - coordCanvas.x;
+            var y = event.clientY - coordCanvas.y;
+
+            dd.innerText = "Coordenadas: (" + x + ", " + y + ")";
+        }
 
     //Función para deshacer el último punto agregado: borrará todo y volverá a repetir lo que hemos hecho en la función dibujarLinPol() con los puntos restantes
     function deshacerPunto(){
